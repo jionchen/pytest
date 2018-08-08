@@ -1,6 +1,6 @@
 #!/env/python3
 #-*- coding=utf-8 -*-
-
+#根据人数计算电影票总价
 sum=0
 p=0
 i=input("请问您几个人看电影：")
