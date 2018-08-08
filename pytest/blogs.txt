@@ -1,0 +1,862 @@
+【蓝桥杯单片机12】实时时钟DS1302的基本操作
+https://www.cnblogs.com/ALittleBee/p/9428725.html
+【蓝桥杯单片机11】单总线温度传感器DS18B20的基本操作
+https://www.cnblogs.com/ALittleBee/p/9427165.html
+【蓝桥杯单片机10】串行接口的进阶与实战应用
+https://www.cnblogs.com/ALittleBee/p/8955539.html
+【蓝桥杯单片机09】串行接口的基本原理与应用
+https://www.cnblogs.com/ALittleBee/p/8478306.html
+【蓝桥杯单片机08】定时器的基本原理与应用
+https://www.cnblogs.com/ALittleBee/p/8437448.html
+【蓝桥杯单片机07】彻底理解51单片机的中断系统
+https://www.cnblogs.com/ALittleBee/p/8414903.html
+【蓝桥杯单片机06】矩阵键盘的基本控制
+https://www.cnblogs.com/ALittleBee/p/8411771.html
+【蓝桥杯单片机05】独立按键的基本操作
+https://www.cnblogs.com/ALittleBee/p/8406372.html
+【蓝桥杯单片机04】数码管的动态显示
+https://www.cnblogs.com/ALittleBee/p/8370496.html
+【蓝桥杯单片机03】数码管的静态显示
+https://www.cnblogs.com/ALittleBee/p/8365437.html
+【蓝桥杯单片机02】LED的基本控制
+https://www.cnblogs.com/ALittleBee/p/8359701.html
+【蓝桥杯单片机01】从历年决赛真题中寻找单片机常见的考点
+https://www.cnblogs.com/ALittleBee/p/8339961.html
+【老司机经验】CC2530&STM8S105二合一嵌入式学习板设计思路与经验分享
+https://www.cnblogs.com/ALittleBee/p/8157413.html
+【技能大赛笔记01】Zigbee点对点按键控制程序开发
+https://www.cnblogs.com/ALittleBee/p/8068391.html
+【网络爬虫入门05】分布式文件存储数据库MongoDB的基本操作与爬虫应用
+https://www.cnblogs.com/ALittleBee/p/7707509.html
+【网络爬虫入门04】彻底掌握BeautifulSoup的CSS选择器
+https://www.cnblogs.com/ALittleBee/p/7702560.html
+【网络爬虫入门03】爬虫解析利器beautifulSoup模块的基本应用
+https://www.cnblogs.com/ALittleBee/p/7700127.html
+【网络爬虫入门02】HTTP客户端库Requests的基本原理与基础应用
+https://www.cnblogs.com/ALittleBee/p/7669180.html
+【网络爬虫入门01】应用Requests和BeautifulSoup联手打造的第一条网络爬虫
+https://www.cnblogs.com/ALittleBee/p/7668149.html
+【Zigbee技术入门教程-02】一图读懂ZStack协议栈的基本架构和工作机理
+https://www.cnblogs.com/ALittleBee/p/7463239.html
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>python代码和资源分享-Python论坛-国内最好的Python中文社区</title>
+<meta content="python代码和资源分享-Python论坛-国内最好的Python中文社区 " name="description"/>
+<meta content="True" name="MSSmartTagsPreventParsing"/>
+<meta content="Yes" http-equiv="MSThemeCompatible"/>
+<base href="https://bbs.pythontab.com/"/><link href="data/cache/style_2_common.css?aky" rel="stylesheet" type="text/css"/><link href="data/cache/style_2_forum_forumdisplay.css?aky" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var STYLEID = '2', STATICURL = 'static/', IMGDIR = 'static/image/common', VERHASH = 'aky', charset = 'utf-8', discuz_uid = '0', cookiepre = 'RFKT_2132_', cookiedomain = '', cookiepath = '/', showusercard = '1', attackevasive = '0', disallowfloat = 'newthread', creditnotice = '1|铜币|枚,2|威望|点,3|银元|个,4|贡献|点,5|鸡蛋|个,6|鲜花|朵', defaultstyle = '', REPORTURL = 'aHR0cDovL2Jicy5weXRob250YWIuY29tL2ZvcnVtLTMtMS5odG1s', SITEURL = 'https://bbs.pythontab.com/', JSPATH = 'data/cache/', CSSPATH = 'data/cache/style_', DYNAMICURL = '';</script>
+<script src="data/cache/common.js?aky" type="text/javascript"></script>
+<script src="template/win8mi_5th_hui/src/js/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">jq = jQuery.noConflict();</script>
+<!--[if IE 6]>
+    <script src="template/win8mi_5th_hui/src/js/png.js" type="text/javascript" ></script>
+     <script type="text/javascript">
+     DD_belatedPNG.fix('.nav_box, .navi img, .hd_logo img, #maincontent .entry-info, #maincontent .entry-info .entry-title, .slider .slider-more, .slider-nav a, .user_link i, .usernav li .png i, .userinfo .arrow, .user_list .i_qq, .user_list .i_wb, .nav_icon, .blackbg, .comment-bubble, .slider-more, .index_tit .more, .index_tit h3, .index_tit ul li, .index_tit ul li.on, .pgs #newspecial, .pgs #newspecialtmp, #post_reply, #post_replytmp, .slideBox .bd em, .f-slideBox .hd ul li, .f-slideBox .hd ul li.on, .scbar_btn_td, #scbar_btn, .slideBox .hd ul li, #footer .widget .widget-title, #footer .widget p img, .focus_box .hd li, .focus_box .hd .on, .taber .tb a, .taber .tb .a a, .headpost a, .replys, .views, .date, .right_list .v, .right_list .c, i.icon-entypo-clock, i.icon-entypo-eye, i.icon-entypo-chat, .rss_top, .list_focuss2 .hd2 .prev, .list_focuss2 .hd2 .next, .list_focuss2 h3, .view i, .info i, .viewmore i, .next, .slider .hd ul li, .slider .hd ul li.on, .slider .hd, #scrolltop a, .media i, .weibo i, a.loves i, a.comments i, .prev, .cmt i, i.coin, .tags, .au i, #xiandai_tips dl dt, #xiandai_tips dl dd');
+    </script> 
+    <script language='javascript' type="text/javascript">  
+    function ResumeError() {  
+         return true;  
+    }  
+    window.onerror = ResumeError;   
+    </script> 
+    <![endif]-->
+<meta content="Python论坛 - 国内最好的Python中文社区" name="application-name"/>
+<meta content="Python论坛 - 国内最好的Python中文社区" name="msapplication-tooltip"/>
+<meta content="name=论坛;action-uri=https://bbs.pythontab.com/forum.php;icon-uri=https://bbs.pythontab.com/static/image/common/bbs.ico" name="msapplication-task"/>
+<link href="https://bbs.pythontab.com/archiver/" rel="archives" title="Python论坛 - 国内最好的Python中文社区"/>
+<link href="https://bbs.pythontab.com/forum.php?mod=rss&amp;fid=3&amp;auth=0" rel="alternate" title="Python论坛 - 国内最好的Python中文社区 - Python论坛 - 国内最好的Python中文社区：Python论坛|Python教程|Django教程|Python框架" type="application/rss+xml"/>
+<script src="data/cache/forum.js?aky" type="text/javascript"></script>
+</head><body class="pg_forumdisplay" id="nv_forum" onkeydown="if(event.keyCode==27) return false;">
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div id="wrap">
+<div id="head_top">
+<div class="head_top ">
+<div class="wp1020 cl">
+<!-- 站点LOGO -->
+<div class="hd_logo">
+<h2><a href="./" title="Python论坛 - 国内最好的Python中文社区"><img alt="Python论坛 - 国内最好的Python中文社区" border="0" src="template/win8mi_5th_hui/src/logo.png"/></a></h2>
+</div>
+<div class="navs">
+<ul>
+<li><a href="/">首页</a></li>
+<li><a href="https://www.pythontab.com">Python中文网</a></li>
+<li><a href="https://docs.pythontab.com">在线手册</a></li>
+<li><a href="https://www.pythontab.com/html/pythonjichu/">Python入门</a></li>
+<li><a href="https://www.pythontab.com/html/linuxkaiyuan/">Linux教程</a></li>
+<li><a href="https://www.pythontab.com/html/pythonhexinjiaocheng/">Python高级教程</a></li>
+</ul>
+</div>
+<!-- 用户信息 -->
+<div class="userbox">
+<ul class="usernav user_part">
+<li class="user_list"><a class="user_link login" href="javascript:;" onclick="javascript:lsSubmit();">登录</a></li>
+<li class="user_list"><a class="user_link register" href="member.php?mod=registerp">注册</a></li>
+</ul>
+<div style="display:none"><script src="data/cache/logging.js?aky" type="text/javascript"></script>
+<form action="member.php?mod=logging&amp;action=login&amp;loginsubmit=yes&amp;infloat=yes&amp;lssubmit=yes" autocomplete="off" id="lsform" method="post" onsubmit="return lsSubmit();">
+<div class="fastlg cl">
+<span id="return_ls" style="display:none"></span>
+<div class="y pns">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td>
+<span class="ftid">
+<select id="ls_fastloginfield" name="fastloginfield" tabindex="900" width="40">
+<option value="username">用户名</option>
+<option value="email">Email</option>
+</select>
+</span>
+<script type="text/javascript">simulateSelect('ls_fastloginfield')</script>
+</td>
+<td><input autocomplete="off" class="px vm" id="ls_username" name="username" tabindex="901" type="text"/></td>
+<td class="fastlg_l"><label for="ls_cookietime"><input class="pc" id="ls_cookietime" name="cookietime" tabindex="903" type="checkbox" value="2592000"/>自动登录</label></td>
+<td> <a href="javascript:;" onclick="showWindow('login', 'member.php?mod=logging&amp;action=login&amp;viewlostpw=1')">找回密码</a></td>
+</tr>
+<tr>
+<td><label class="z psw_w" for="ls_password">密码</label></td>
+<td><input autocomplete="off" class="px vm" id="ls_password" name="password" tabindex="902" type="password"/></td>
+<td class="fastlg_l"><button class="pn vm" style="width: 75px;" tabindex="904" type="submit"><em>登录</em></button></td>
+<td> <a class="xi2 xw1" href="member.php?mod=registerp">立即注册</a></td>
+</tr>
+</table>
+<input name="quickforward" type="hidden" value="yes"/>
+<input name="handlekey" type="hidden" value="ls"/>
+</div>
+<div class="fastlg_fm y" style="margin-right: 10px; padding-right: 10px">
+<p><a href="https://bbs.pythontab.com/connect.php?mod=login&amp;op=init&amp;referer=forum.php%3Fmod%3Dforumdisplay%26fid%3D3%26page%3D1&amp;statfrom=login_simple"><img alt="QQ登录" class="vm" src="static/image/common/qq_login.gif"/></a></p>
+<p class="hm xg1" style="padding-top: 2px;">只需一步，快速开始</p>
+</div>
+<div class="fastlg_fm y" style="margin-right: 10px; padding-right: 10px">
+<p><a href="plugin.php?id=wechat:login"><img class="vm" src="source/plugin/wechat/image/wechat_login.png"/></a></p>
+<p class="hm xg1" style="padding-top: 2px;">扫一扫，访问微社区</p>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="wp cl" style="padding: 85px 0 0 0; _padding: 20px;">
+<!-- 导航 -->
+<div class="nav_box">
+<div class="nav">
+<ul>
+<li class="a" id="mn_forum"><a hidefocus="true" href="forum.php" title="BBS">论坛<span>BBS</span></a><em></em></li>
+<li id="mn_Ne8ea"><a hidefocus="true" href="https://www.pythontab.com">Python中文网</a><em></em></li>
+<li id="mn_N67f9"><a hidefocus="true" href="https://docs.pythontab.com" style="color: yellow">在线手册</a><em></em></li>
+<li id="mn_Nf489"><a hidefocus="true" href="https://www.pythontab.com/html/pythonjichu/">Python入门</a><em></em></li>
+<li id="mn_Nc106"><a hidefocus="true" href="https://www.pythontab.com/html/linuxkaiyuan/">Linux教程</a><em></em></li>
+<li id="mn_Na98a"><a hidefocus="true" href="https://www.pythontab.com/html/pythonhexinbiancheng/">Python高级教程</a><em></em></li>
+<li id="mn_N17ab"><a hidefocus="true" href="https://www.pythontab.com/html/hanshu/">Python函数详解</a><em></em></li>
+</ul>
+</div>
+<div class="cl" id="scbar">
+<form action="search.php?searchsubmit=yes" autocomplete="off" id="scbar_form" method="post" onsubmit="searchFocus($('scbar_txt'))" target="_blank">
+<input id="scbar_mod" name="mod" type="hidden" value="search"/>
+<input name="formhash" type="hidden" value="12602e82"/>
+<input name="srchtype" type="hidden" value="title"/>
+<input name="srhfid" type="hidden" value="3"/>
+<input name="srhlocality" type="hidden" value="forum::forumdisplay"/>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="scbar_txt_td"><input autocomplete="off" id="scbar_txt" name="srchtxt" speech="" type="text" value="请输入搜索内容" x-webkit-speech=""/></td>
+<td class="scbar_type_td"><a class="xg1" hidefocus="true" href="javascript:;" id="scbar_type" onclick="showMenu(this.id)">搜索</a></td>
+<td class="scbar_btn_td"><button class="pn pnc" id="scbar_btn" name="searchsubmit" sc="1" type="submit" value="true"></button></td>
+</tr>
+</table>
+</form>
+</div>
+<ul class="p_pop" id="scbar_type_menu" style="display: none;"><li><a fid="3" href="javascript:;" rel="curforum">本版</a></li><li><a class="curtype" href="javascript:;" rel="forum">帖子</a></li><li><a href="javascript:;" rel="user">用户</a></li></ul>
+<script type="text/javascript">
+initSearchmenu('scbar', '');
+</script>
+</div>
+<!-- <div class="top_ad"><a id="top_adv" href="#"><img src="template/win8mi_5th_hui/src/ad/ad_top.jpg"></a></div> -->
+</div>
+<script src="template/win8mi_5th_hui/src/js/nav.js" type="text/javascript"></script>
+<div class="p_pop blk" id="qmenu_menu" style="display: none;">
+<div class="ptm pbw hm">
+请 <a class="xi2" href="javascript:;" onclick="lsSubmit()"><strong>登录</strong></a> 后使用快捷导航<br/>没有帐号？<a class="xi2 xw1" href="member.php?mod=registerp">立即注册</a>
+</div>
+<div class="btda" id="fjump_menu"></div></div>
+<!-- 二级导航 -->
+<div class="sub_nav"> <div class="p_pop h_pop" id="mn_userapp_menu" style="display: none"></div> </div>
+<ul class="sub_menu" id="m_menu" style="display: none;">
+<li></li>
+<li></li>
+<li></li>
+<li><a href="home.php?mod=magic" style="background-image:url(https://bbs.pythontab.com/static/image/feed/magic_b.png) !important">道具</a></li>
+<li><a href="home.php?mod=medal" style="background-image:url(https://bbs.pythontab.com/static/image/feed/medal_b.png) !important">勋章</a></li>
+<li><a href="home.php?mod=task" style="background-image:url(https://bbs.pythontab.com/static/image/feed/task_b.png) !important">任务</a></li>
+<li><a href="home.php?mod=spacecp">设置</a></li>
+<li><a href="member.php?mod=logging&amp;action=logout&amp;formhash=12602e82">退出</a></li>
+</ul>
+<div class="wp win8mi_wp" id="wp">
+<style id="diy_style" type="text/css">#framecL99DZ {  margin-bottom:10px !important;}</style>
+<!--[diy=diynavtop]--><div class="area" id="diynavtop"></div><!--[/diy]-->
+<div class="bm cl" id="pt">
+<div class="z">
+<a class="nvhm" href="./" title="首页">Python论坛 - 国内最好的Python中文社区</a><em>»</em><a href="forum.php">论坛</a> <em>›</em> <a href="forum.php?gid=1">技术交流</a><em>›</em> <a href="forum-3-1.html">python代码和资源分享</a></div>
+</div><div class="wp">
+<!--[diy=diy1]--><div class="area" id="diy1"><div class=" frame move-span cl frame-1" id="framecL99DZ"><div class="column frame-1-c" id="framecL99DZ_left"><div class="move-span temp" id="framecL99DZ_left_temp"></div><div class="block move-span" id="portal_block_15"><div class="dxb_bc" id="portal_block_15_content"><div class="portal_block_summary"><script src="https://www.pythontab.com/statics/js/coop/bbs_header.js?060" type="text/javascript"></script></div></div></div></div></div></div><!--[/diy]-->
+</div>
+<div class="boardnav">
+<div class="wp cl" id="ct">
+<div class="mn animated fadeInUp">
+<div class="bm bml" style="padding: 10px 20px 5px 20px; margin-bottom: 20px;">
+<div class="bm_h cl" style="border-bottom: 0;">
+<span style="float: left;"><h1 class="xs2">
+<a href="forum-3-1.html" style="font-size: 16px; font-family: 'Microsoft Yahei'; color: #555555;">python代码和资源分享</a>
+<span class="xs1 xw0 i">今日: <strong class="xi1">0</strong><span class="pipe">|</span>主题: <strong class="xi1">223</strong><span class="pipe">|</span>排名: <strong class="xi1" title="上次排名:1">2</strong><b class="ico_fall"> </b></span></h1></span>
+<span style="float: left; padding: 2px 0 0 20px;">
+<a class="fa_fav" href="home.php?mod=spacecp&amp;ac=favorite&amp;type=forum&amp;id=3&amp;handlekey=favoriteforum" id="a_favorite" onclick="showWindow(this.id, this.href, 'get', 0);">收藏本版 <strong class="xi1" id="number_favorite">(<span id="number_favorite_num">7</span>)</strong></a>
+<span class="pipe">|</span><a class="fa_rss" href="forum.php?mod=rss&amp;fid=3&amp;auth=0" target="_blank" title="RSS">订阅</a>
+</span>
+<div class="pgs" style="float: right; margin: 2px 0 0 0;">
+<a class="top_post" href="javascript:;" id="newspecial" onclick="showWindow('newthread', 'forum.php?mod=post&amp;action=newthread&amp;fid=3')" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" title="发新帖"><img alt="发新帖" src="template/win8mi_5th_hui/src/pn_post.png"/></a></div>
+</div>
+</div>
+<div class="drag">
+<!--[diy=diy4]--><div class="area" id="diy4"></div><!--[/diy]-->
+</div>
+<ul class="ttp bm cl" id="thread_types">
+<li class="xw1 a" id="ttp_all"><a href="forum-3-1.html">全部</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例<span class="xg1 num">(162)</span></a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=8">资源与教程<span class="xg1 num">(55)</span></a></li>
+</ul>
+<script type="text/javascript">showTypes('thread_types');</script>
+<div class="tl bm bmw" id="threadlist">
+<div class="th menubox cl">
+<th colspan="2">
+<div class="y"> <a class="xi2" href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=lastpost&amp;orderby=lastpost">最新</a>  <span class="pipe">|</span> <a class="xi2" href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=heat&amp;orderby=heats">热门</a>  <span class="pipe">|</span> <a class="xi2" href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=hot">热帖</a>  <span class="pipe">|</span> <a class="xi2" href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=digest&amp;digest=1">精华</a>  <span class="pipe">|</span>
+<span class="atarget_1" id="atarget" onclick="setatarget(-1)" title="在新窗口中打开帖子">新窗</span> </div>
+      筛选： 
+       
+      <span class="showmenu_outer"><a class="showmenu xi2" href="javascript:;" id="filter_special" onclick="showMenu(this.id)">全部主题</a> </span> <span class="showmenu_outer"><a class="showmenu xi2" href="javascript:;" id="filter_dateline" onclick="showMenu(this.id)">全部时间</a> </span> 排序： <span class="showmenu_outer"><a class="showmenu xi2" href="javascript:;" id="filter_orderby" onclick="showMenu(this.id)">最后发表</a> </span>
+<span id="clearstickthread" style="display: none;"> <span class="pipe">|</span> <a class="xi2" href="javascript:;" onclick="clearStickThread()" title="显示置顶">显示置顶</a> </span>
+</th>
+</div>
+<div class="bm_c">
+<script type="text/javascript">var lasttime = 1533610953;var listcolspan= '5';</script>
+<div id="forumnew" style="display:none"></div>
+<form action="forum.php?mod=topicadmin&amp;action=moderate&amp;fid=3&amp;infloat=yes&amp;nopost=yes" autocomplete="off" id="moderate" method="post" name="moderate">
+<input name="formhash" type="hidden" value="12602e82"/>
+<input name="listextra" type="hidden" value="page%3D1"/>
+<table cellpadding="0" cellspacing="0" id="threadlisttableid" summary="forum_3">
+<tbody id="stickthread_3393">
+<tr>
+<td class="icon"><a c="1" class="arvtx" href="space-uid-588801.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=588801&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-3393-1-1.html" target="_blank" title="全局置顶主题 - 新窗口打开">
+<img alt="全局置顶" src="static/image/common/pin_3.gif"/>
+</a></td>
+<th class="common"> <a class="showcontent y" href="javascript:;" id="content_3393" onclick="CONTENT_TID='3393';CONTENT_ID='stickthread_3393';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<a class="showhide y" href="javascript:void(0);" onclick="hideStickThread('3393')" title="隐藏置顶帖">隐藏置顶帖</a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=8">资源与教程</a>]</em>
+<a class="s xst" href="thread-3393-1-1.html" onclick="atarget(this)" style="font-weight: bold;color: #3C9D40;">Python自学参考书</a>
+<img align="absmiddle" alt="版主推荐" src="static/image/stamp/008.small.gif"/>
+<img align="absmiddle" alt="attachment" src="static/image/filetype/common.gif" title="附件"/>
+<span class="tps"> ...<a href="thread-3393-2-1.html">2</a><a href="thread-3393-3-1.html">3</a><a href="thread-3393-4-1.html">4</a><a href="thread-3393-5-1.html">5</a><a href="thread-3393-6-1.html">6</a>..<a href="thread-3393-10-1.html">10</a></span>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-588801.html">莲花生</a>
+</cite> <em><span>2017-1-26</span></em></td>
+<td class="num"><a class="xi2" href="thread-3393-1-1.html">94</a> <span class="line">/</span> <em>18441</em></td>
+<td class="by"><cite><a c="1" href="space-username-haizinuli.html">haizinuli</a></cite> <em><a href="thread-3393-1-1.html">2018-7-25 17:32</a></em></td>
+</tr>
+</tbody>
+<tbody id="stickthread_699">
+<tr class="list2">
+<td class="icon"><a c="1" class="arvtx" href="space-uid-1.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=1&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-699-1-1.html" target="_blank" title="全局置顶主题 - 新窗口打开">
+<img alt="全局置顶" src="static/image/common/pin_3.gif"/>
+</a></td>
+<th class="common"> <a class="showcontent y" href="javascript:;" id="content_699" onclick="CONTENT_TID='699';CONTENT_ID='stickthread_699';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<a class="showhide y" href="javascript:void(0);" onclick="hideStickThread('699')" title="隐藏置顶帖">隐藏置顶帖</a>
+<a class="s xst" href="thread-699-1-1.html" onclick="atarget(this)" style="font-weight: bold;color: #2B65B7;">Python技术交流互助QQ群</a>
+<img align="absmiddle" alt="置顶" src="static/image/stamp/005.small.gif"/>
+<img align="absmiddle" alt="attach_img" src="static/image/filetype/image_s.gif" title="图片附件"/>
+<img align="absmiddle" alt="digest" src="static/image/common/digest_1.gif" title="精华 1"/>
+<span class="tps"> ...<a href="thread-699-2-1.html">2</a><a href="thread-699-3-1.html">3</a></span>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-1.html">blueelwang</a>
+</cite> <em><span>2014-4-17</span></em></td>
+<td class="num"><a class="xi2" href="thread-699-1-1.html">24</a> <span class="line">/</span> <em>13424</em></td>
+<td class="by"><cite><a c="1" href="space-username-%E6%88%91%E6%98%AF%E5%90%83%E8%B4%A7.html">我是吃货</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=699&amp;goto=lastpost#lastpost">2018-7-16 21:32</a></em></td>
+</tr>
+</tbody>
+<tbody id="separatorline">
+<tr class="ts">
+<td class="icon"> </td>
+<td> </td>
+<th><a class="forumrefresh" href="javascript:;" onclick="checkForumnew_btn('3')" title="查看更新">版块主题</a></th>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+<script type="text/javascript">hideStickThread();</script>
+<tbody id="normalthread_35135">
+<tr>
+<td class="icon"><a c="1" class="arvtx" href="space-uid-600655.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=600655&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-35135-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_35135" onclick="CONTENT_TID='35135';CONTENT_ID='normalthread_35135';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-35135-1-1.html" onclick="atarget(this)">Lintcode515 Paint House solution 题解</a>
+<a class="xi1" href="forum.php?mod=redirect&amp;tid=35135&amp;goto=lastpost#lastpost">New</a>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-600655.html">rockerrrr</a>
+</cite> <em><span><span title="2018-8-6">昨天 18:09</span></span></em></td>
+<td class="num"><a class="xi2" href="thread-35135-1-1.html">0</a> <span class="line">/</span> <em>16</em></td>
+<td class="by"><cite><a c="1" href="space-username-rockerrrr.html">rockerrrr</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=35135&amp;goto=lastpost#lastpost"><span title="2018-8-6 18:09">昨天 18:09</span></a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_1817">
+<tr class="list2">
+<td class="icon"><a c="1" class="arvtx" href="space-uid-1.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=1&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-1817-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_1817" onclick="CONTENT_TID='1817';CONTENT_ID='normalthread_1817';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-1817-1-1.html" onclick="atarget(this)" style="color: #EE1B2E;">一百行代码实现的《2048》小游戏</a>
+<span class="tps"> ...<a href="thread-1817-2-1.html">2</a><a href="thread-1817-3-1.html">3</a></span>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-1.html">blueelwang</a>
+</cite> <em><span>2014-8-19</span></em></td>
+<td class="num"><a class="xi2" href="thread-1817-1-1.html">24</a> <span class="line">/</span> <em>15060</em></td>
+<td class="by"><cite><a c="1" href="space-username-RIPPaulWalker.html">RIPPaulWalker</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=1817&amp;goto=lastpost#lastpost"><span title="2018-8-5 10:04">前天 10:04</span></a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_35123">
+<tr>
+<td class="icon"><a c="1" class="arvtx" href="space-uid-600655.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=600655&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-35123-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_35123" onclick="CONTENT_TID='35123';CONTENT_ID='normalthread_35123';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-35123-1-1.html" onclick="atarget(this)">Lintcode514 Paint Fence solution 题解</a>
+<a class="xi1" href="forum.php?mod=redirect&amp;tid=35123&amp;goto=lastpost#lastpost">New</a>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-600655.html">rockerrrr</a>
+</cite> <em><span><span title="2018-8-2">5 天前</span></span></em></td>
+<td class="num"><a class="xi2" href="thread-35123-1-1.html">0</a> <span class="line">/</span> <em>52</em></td>
+<td class="by"><cite><a c="1" href="space-username-rockerrrr.html">rockerrrr</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=35123&amp;goto=lastpost#lastpost"><span title="2018-8-2 10:49">5 天前</span></a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_35120">
+<tr class="list2">
+<td class="icon"><a c="1" class="arvtx" href="space-uid-600655.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=600655&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-35120-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_35120" onclick="CONTENT_TID='35120';CONTENT_ID='normalthread_35120';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-35120-1-1.html" onclick="atarget(this)">Lintcode513 Perfect Squares solution 题解</a>
+<a class="xi1" href="forum.php?mod=redirect&amp;tid=35120&amp;goto=lastpost#lastpost">New</a>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-600655.html">rockerrrr</a>
+</cite> <em><span><span title="2018-8-1">6 天前</span></span></em></td>
+<td class="num"><a class="xi2" href="thread-35120-1-1.html">0</a> <span class="line">/</span> <em>50</em></td>
+<td class="by"><cite><a c="1" href="space-username-rockerrrr.html">rockerrrr</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=35120&amp;goto=lastpost#lastpost"><span title="2018-8-1 10:29">6 天前</span></a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_35113">
+<tr>
+<td class="icon"><a c="1" class="arvtx" href="space-uid-600655.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=600655&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-35113-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_35113" onclick="CONTENT_TID='35113';CONTENT_ID='normalthread_35113';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-35113-1-1.html" onclick="atarget(this)">Lintcode512 Decode Ways solution 题解</a>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-600655.html">rockerrrr</a>
+</cite> <em><span><span title="2018-7-31">7 天前</span></span></em></td>
+<td class="num"><a class="xi2" href="thread-35113-1-1.html">0</a> <span class="line">/</span> <em>45</em></td>
+<td class="by"><cite><a c="1" href="space-username-rockerrrr.html">rockerrrr</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=35113&amp;goto=lastpost#lastpost"><span title="2018-7-31 10:23">7 天前</span></a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_4592">
+<tr class="list2">
+<td class="icon"><a c="1" class="arvtx" href="space-uid-3.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=3&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-4592-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_4592" onclick="CONTENT_TID='4592';CONTENT_ID='normalthread_4592';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=8">资源与教程</a>]</em>
+<a class="s xst" href="thread-4592-1-1.html" onclick="atarget(this)" style="font-weight: bold;font-style: italic;color: #EE1B2E;">机器学习入门必备书籍免费下载</a>
+<img align="absmiddle" alt="heatlevel" src="static/image/common/hot_3.gif" title="热度: 310"/>
+<span class="tps"> ...<a href="thread-4592-2-1.html">2</a><a href="thread-4592-3-1.html">3</a><a href="thread-4592-4-1.html">4</a><a href="thread-4592-5-1.html">5</a><a href="thread-4592-6-1.html">6</a>..<a href="thread-4592-32-1.html">32</a></span>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-3.html">pythoner</a>
+</cite> <em><span>2017-9-7</span></em></td>
+<td class="num"><a class="xi2" href="thread-4592-1-1.html">316</a> <span class="line">/</span> <em>8106</em></td>
+<td class="by"><cite><a c="1" href="space-username-jasonkwong.html">jasonkwong</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=4592&amp;goto=lastpost#lastpost">2018-7-30 21:00</a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_35106">
+<tr>
+<td class="icon"><a c="1" class="arvtx" href="space-uid-600655.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=600655&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-35106-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_35106" onclick="CONTENT_TID='35106';CONTENT_ID='normalthread_35106';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-35106-1-1.html" onclick="atarget(this)">Lintcode511 Swap Two Nodes in Linked List solution 题解</a>
+<img align="absmiddle" alt="新人帖" src="static/image/stamp/011.small.gif"/>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-600655.html">rockerrrr</a>
+</cite> <em><span>2018-7-30</span></em></td>
+<td class="num"><a class="xi2" href="thread-35106-1-1.html">0</a> <span class="line">/</span> <em>45</em></td>
+<td class="by"><cite><a c="1" href="space-username-rockerrrr.html">rockerrrr</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=35106&amp;goto=lastpost#lastpost">2018-7-30 10:23</a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_35071">
+<tr class="list2">
+<td class="icon"><a c="1" class="arvtx" href="space-uid-600511.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=600511&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-35071-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_35071" onclick="CONTENT_TID='35071';CONTENT_ID='normalthread_35071';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=8">资源与教程</a>]</em>
+<a class="s xst" href="thread-35071-1-1.html" onclick="atarget(this)">请问各位大侠python基于basemap画地图，如何用插值方法，例...</a>
+<img align="absmiddle" alt="新人帖" src="static/image/stamp/011.small.gif"/>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-600511.html">zhao0415</a>
+</cite> <em><span>2018-7-17</span></em></td>
+<td class="num"><a class="xi2" href="thread-35071-1-1.html">0</a> <span class="line">/</span> <em>126</em></td>
+<td class="by"><cite><a c="1" href="space-username-zhao0415.html">zhao0415</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=35071&amp;goto=lastpost#lastpost">2018-7-17 19:47</a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_35027">
+<tr>
+<td class="icon"><a c="1" class="arvtx" href="space-uid-600384.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=600384&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-35027-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_35027" onclick="CONTENT_TID='35027';CONTENT_ID='normalthread_35027';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-35027-1-1.html" onclick="atarget(this)">【原创】Python全栈工程师（0基础到精通）教程 第一课</a>
+<img align="absmiddle" alt="新人帖" src="static/image/stamp/011.small.gif"/>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-600384.html">ParisGabriel</a>
+</cite> <em><span>2018-7-7</span></em></td>
+<td class="num"><a class="xi2" href="thread-35027-1-1.html">0</a> <span class="line">/</span> <em>336</em></td>
+<td class="by"><cite><a c="1" href="space-username-ParisGabriel.html">ParisGabriel</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=35027&amp;goto=lastpost#lastpost">2018-7-7 22:57</a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_35026">
+<tr class="list2">
+<td class="icon"><a c="1" class="arvtx" href="space-uid-599806.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=599806&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-35026-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_35026" onclick="CONTENT_TID='35026';CONTENT_ID='normalthread_35026';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-35026-1-1.html" onclick="atarget(this)">Lintcode510 Maximal Rectangle solution 题解</a>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-599806.html">Jenny</a>
+</cite> <em><span>2018-7-7</span></em></td>
+<td class="num"><a class="xi2" href="thread-35026-1-1.html">0</a> <span class="line">/</span> <em>131</em></td>
+<td class="by"><cite><a c="1" href="space-username-Jenny.html">Jenny</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=35026&amp;goto=lastpost#lastpost">2018-7-7 21:27</a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_35023">
+<tr>
+<td class="icon"><a c="1" class="arvtx" href="space-uid-599806.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=599806&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-35023-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_35023" onclick="CONTENT_TID='35023';CONTENT_ID='normalthread_35023';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-35023-1-1.html" onclick="atarget(this)">Lintcode508 Wiggle Sort solution 题解</a>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-599806.html">Jenny</a>
+</cite> <em><span>2018-7-6</span></em></td>
+<td class="num"><a class="xi2" href="thread-35023-1-1.html">0</a> <span class="line">/</span> <em>130</em></td>
+<td class="by"><cite><a c="1" href="space-username-Jenny.html">Jenny</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=35023&amp;goto=lastpost#lastpost">2018-7-6 21:55</a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_35017">
+<tr class="list2">
+<td class="icon"><a c="1" class="arvtx" href="space-uid-599806.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=599806&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-35017-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_35017" onclick="CONTENT_TID='35017';CONTENT_ID='normalthread_35017';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-35017-1-1.html" onclick="atarget(this)">Lintcode507 Wiggle Sort II solution 题解</a>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-599806.html">Jenny</a>
+</cite> <em><span>2018-7-5</span></em></td>
+<td class="num"><a class="xi2" href="thread-35017-1-1.html">0</a> <span class="line">/</span> <em>126</em></td>
+<td class="by"><cite><a c="1" href="space-username-Jenny.html">Jenny</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=35017&amp;goto=lastpost#lastpost">2018-7-5 21:59</a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_2684">
+<tr>
+<td class="icon"><a c="1" class="arvtx" href="space-uid-585043.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=585043&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-2684-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_2684" onclick="CONTENT_TID='2684';CONTENT_ID='normalthread_2684';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-2684-1-1.html" onclick="atarget(this)">Python游戏之 - 决战紫荆之巅开发分享（附源码）</a>
+<img align="absmiddle" alt="attach_img" src="static/image/filetype/image_s.gif" title="图片附件"/>
+<span class="tps"> ...<a href="thread-2684-2-1.html">2</a><a href="thread-2684-3-1.html">3</a></span>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-585043.html">xuexiPython</a>
+</cite> <em><span>2016-8-18</span></em></td>
+<td class="num"><a class="xi2" href="thread-2684-1-1.html">22</a> <span class="line">/</span> <em>4837</em></td>
+<td class="by"><cite><a c="1" href="space-username-ffwangyue.html">ffwangyue</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=2684&amp;goto=lastpost#lastpost">2018-7-5 10:00</a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_35014">
+<tr class="list2">
+<td class="icon"><a c="1" class="arvtx" href="space-uid-599806.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=599806&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-35014-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_35014" onclick="CONTENT_TID='35014';CONTENT_ID='normalthread_35014';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-35014-1-1.html" onclick="atarget(this)">Lintcode501 Mini Twitter solution 题解</a>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-599806.html">Jenny</a>
+</cite> <em><span>2018-7-4</span></em></td>
+<td class="num"><a class="xi2" href="thread-35014-1-1.html">0</a> <span class="line">/</span> <em>117</em></td>
+<td class="by"><cite><a c="1" href="space-username-Jenny.html">Jenny</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=35014&amp;goto=lastpost#lastpost">2018-7-4 21:59</a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_35013">
+<tr>
+<td class="icon"><a c="1" class="arvtx" href="space-uid-599806.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=599806&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-35013-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_35013" onclick="CONTENT_TID='35013';CONTENT_ID='normalthread_35013';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-35013-1-1.html" onclick="atarget(this)">Lintcode499 Word Count (Map Reduce) solution 题解</a>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-599806.html">Jenny</a>
+</cite> <em><span>2018-7-3</span></em></td>
+<td class="num"><a class="xi2" href="thread-35013-1-1.html">0</a> <span class="line">/</span> <em>137</em></td>
+<td class="by"><cite><a c="1" href="space-username-Jenny.html">Jenny</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=35013&amp;goto=lastpost#lastpost">2018-7-3 22:13</a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_34982">
+<tr class="list2">
+<td class="icon"><a c="1" class="arvtx" href="space-uid-599806.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=599806&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-34982-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_34982" onclick="CONTENT_TID='34982';CONTENT_ID='normalthread_34982';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-34982-1-1.html" onclick="atarget(this)">Lintcode496 Toy Factory solution 题解</a>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-599806.html">Jenny</a>
+</cite> <em><span>2018-6-22</span></em></td>
+<td class="num"><a class="xi2" href="thread-34982-1-1.html">0</a> <span class="line">/</span> <em>162</em></td>
+<td class="by"><cite><a c="1" href="space-username-Jenny.html">Jenny</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=34982&amp;goto=lastpost#lastpost">2018-6-22 17:42</a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_34978">
+<tr>
+<td class="icon"><a c="1" class="arvtx" href="space-uid-598902.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=598902&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-34978-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_34978" onclick="CONTENT_TID='34978';CONTENT_ID='normalthread_34978';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-34978-1-1.html" onclick="atarget(this)">python openCV识别人体肤色鉴黄，如何去除背景的影响。</a>
+<img align="absmiddle" alt="attach_img" src="static/image/filetype/image_s.gif" title="图片附件"/>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-598902.html">逐梦白痴</a>
+</cite> <em><span>2018-6-22</span></em></td>
+<td class="num"><a class="xi2" href="thread-34978-1-1.html">0</a> <span class="line">/</span> <em>572</em></td>
+<td class="by"><cite><a c="1" href="space-username-%E9%80%90%E6%A2%A6%E7%99%BD%E7%97%B4.html">逐梦白痴</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=34978&amp;goto=lastpost#lastpost">2018-6-22 00:10</a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_34977">
+<tr class="list2">
+<td class="icon"><a c="1" class="arvtx" href="space-uid-599806.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=599806&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-34977-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_34977" onclick="CONTENT_TID='34977';CONTENT_ID='normalthread_34977';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-34977-1-1.html" onclick="atarget(this)">Lintcode491 Palindrome Number solution 题解</a>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-599806.html">Jenny</a>
+</cite> <em><span>2018-6-21</span></em></td>
+<td class="num"><a class="xi2" href="thread-34977-1-1.html">0</a> <span class="line">/</span> <em>143</em></td>
+<td class="by"><cite><a c="1" href="space-username-Jenny.html">Jenny</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=34977&amp;goto=lastpost#lastpost">2018-6-21 21:58</a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_5329">
+<tr>
+<td class="icon"><a c="1" class="arvtx" href="space-uid-597417.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=597417&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-5329-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_5329" onclick="CONTENT_TID='5329';CONTENT_ID='normalthread_5329';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-5329-1-1.html" onclick="atarget(this)">麦克风音频数据采集及波形实时显示</a>
+<img align="absmiddle" alt="新人帖" src="static/image/stamp/011.small.gif"/>
+<img align="absmiddle" alt="attachment" src="static/image/filetype/common.gif" title="附件"/>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-597417.html">排长</a>
+</cite> <em><span>2018-1-17</span></em></td>
+<td class="num"><a class="xi2" href="thread-5329-1-1.html">6</a> <span class="line">/</span> <em>779</em></td>
+<td class="by"><cite><a c="1" href="space-username-byun1016.html">byun1016</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=5329&amp;goto=lastpost#lastpost">2018-6-21 00:04</a></em></td>
+</tr>
+</tbody>
+<tbody id="normalthread_34972">
+<tr class="list2">
+<td class="icon"><a c="1" class="arvtx" href="space-uid-599806.html"><img src="https://bbs.pythontab.com/uc_server/avatar.php?uid=599806&amp;size=small"/></a></td>
+<td class="icn"><a href="thread-34972-1-1.html" target="_blank" title="有新回复 - 新窗口打开">
+<img src="template/win8mi_5th_hui/src/common/folder_new.gif"/>
+</a></td>
+<th class="new"> <a class="showcontent y" href="javascript:;" id="content_34972" onclick="CONTENT_TID='34972';CONTENT_ID='normalthread_34972';showMenu({'ctrlid':this.id,'menuid':'content_menu'})" title="更多操作"></a>
+<em>[<a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=typeid&amp;typeid=7">代码与实例</a>]</em>
+<a class="s xst" href="thread-34972-1-1.html" onclick="atarget(this)">Lintcode488 Happy Number solution 题解</a>
+</th>
+<td class="by">
+<cite>
+<a c="1" href="space-uid-599806.html">Jenny</a>
+</cite> <em><span>2018-6-20</span></em></td>
+<td class="num"><a class="xi2" href="thread-34972-1-1.html">0</a> <span class="line">/</span> <em>152</em></td>
+<td class="by"><cite><a c="1" href="space-username-Jenny.html">Jenny</a></cite> <em><a href="forum.php?mod=redirect&amp;tid=34972&amp;goto=lastpost#lastpost">2018-6-20 22:23</a></em></td>
+</tr>
+</tbody>
+</table>
+<!-- end of table "forum_G[fid]" branch 1/3 -->
+</form>
+</div>
+<a class="bm_h" curpage="1" forumdefstyle="" href="javascript:;" id="autopbn" picstyle="0" rel="forum.php?mod=forumdisplay&amp;fid=3&amp;page=2" totalpage="12">下一页 »</a>
+<script src="data/cache/autoloadpage.js?aky" type="text/javascript"></script>
+<div class="bw0 pgs cl" style="padding: 10px 20px 30px 20px"> <span id="fd_page_bottom"><div class="pg"><strong>1</strong><a href="forum-3-2.html">2</a><a href="forum-3-3.html">3</a><a href="forum-3-4.html">4</a><a href="forum-3-5.html">5</a><a href="forum-3-6.html">6</a><a href="forum-3-7.html">7</a><a href="forum-3-8.html">8</a><a href="forum-3-9.html">9</a><a href="forum-3-10.html">10</a><a class="last" href="forum-3-12.html">... 12</a><label><input class="px" name="custompage" onkeydown="if(event.keyCode==13) {window.location='forum.php?mod=forumdisplay&amp;fid=3&amp;page='+this.value;; doane(event);}" size="2" title="输入页码，按回车快速跳转" type="text" value="1"/><span title="共 12 页"> / 12 页</span></label><a class="nxt" href="forum-3-2.html">下一页</a></div></span> <span class="pgb y"><a href="forum.php">返 回</a></span>
+<a href="javascript:;" id="newspecialtmp" onclick="showWindow('newthread', 'forum.php?mod=post&amp;action=newthread&amp;fid=3')" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" title="发新帖"><img alt="发新帖" src="template/win8mi_5th_hui/src/pn_post.png"/></a>
+</div>
+</div>
+<div change="location.href='forum.php?mod=forumdisplay&amp;fid=3&amp;filter='+$('filter_special').value" class="p_pop" id="filter_special_menu" style="display:none">
+<ul>
+<li><a href="forum-3-1.html">全部主题</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=specialtype&amp;specialtype=poll">投票</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=specialtype&amp;specialtype=reward">悬赏</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=specialtype&amp;specialtype=activity">活动</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=specialtype&amp;specialtype=debate">辩论</a></li>
+</ul>
+</div>
+<div change="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=specialtype&amp;specialtype=reward&amp;rewardtype='+$('filter_reward').value" class="p_pop" id="filter_reward_menu" style="display:none">
+<ul>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=specialtype&amp;specialtype=reward">全部悬赏</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=specialtype&amp;specialtype=reward&amp;rewardtype=1">进行中</a></li>
+</ul>
+</div>
+<div class="p_pop" id="filter_dateline_menu" style="display:none">
+<ul>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;orderby=lastpost&amp;filter=dateline">全部时间</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;orderby=lastpost&amp;filter=dateline&amp;dateline=86400">一天</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;orderby=lastpost&amp;filter=dateline&amp;dateline=172800">两天</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;orderby=lastpost&amp;filter=dateline&amp;dateline=604800">一周</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;orderby=lastpost&amp;filter=dateline&amp;dateline=2592000">一个月</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;orderby=lastpost&amp;filter=dateline&amp;dateline=7948800">三个月</a></li>
+</ul>
+</div>
+<div class="p_pop" id="filter_orderby_menu" style="display:none">
+<ul>
+<li><a href="forum-3-1.html">默认排序</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=author&amp;orderby=dateline">发帖时间</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=reply&amp;orderby=replies">回复/查看</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=reply&amp;orderby=views">查看</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=lastpost&amp;orderby=lastpost">最后发表</a></li>
+<li><a href="forum.php?mod=forumdisplay&amp;fid=3&amp;filter=heat&amp;orderby=heats">热门</a></li>
+</ul>
+</div>
+<!--[diy=diyfastposttop]--><div class="area" id="diyfastposttop"></div><!--[/diy]-->
+<script type="text/javascript">
+var postminchars = parseInt('10');
+var postmaxchars = parseInt('10000');
+var disablepostctrl = parseInt('0');
+var fid = parseInt('3');
+</script>
+<div class="bm" id="f_pst">
+<div class="bm_c">
+<form action="forum.php?mod=post&amp;action=newthread&amp;fid=3&amp;topicsubmit=yes&amp;infloat=yes&amp;handlekey=fastnewpost" autocomplete="off" id="fastpostform" method="post" onsubmit="return fastpostvalidate(this)">
+<div id="fastpostreturn" style="margin:-5px 0 5px"></div>
+<div class="pbt cl">
+<div class="ftid">
+<select id="typeid_fast" name="typeid" width="80">
+<option selected="selected" value="0">选择主题分类</option><option value="7">代码与实例</option>
+<option value="8">资源与教程</option>
+</select>
+</div>
+<script reload="1" type="text/javascript">simulateSelect('typeid_fast');</script>
+<input class="px" id="subject" name="subject" onkeyup="strLenCalc(this, 'checklen', 80);" style="width: 25em" tabindex="11" type="text" value=""/>
+<span>还可输入 <strong id="checklen">80</strong> 个字符</span>
+</div>
+<div class="cl">
+<div class="y" id="fastsmiliesdiv"><div id="fastsmiliesdiv_data"><div id="fastsmilies"></div></div></div><div class="hasfsl" id="fastposteditor">
+<div class="tedt">
+<div class="bar">
+<span class="y">
+<a href="forum.php?mod=post&amp;action=newthread&amp;fid=3" onclick="switchAdvanceMode(this.href);doane(event);">高级模式</a>
+</span><script src="data/cache/seditor.js?aky" type="text/javascript"></script>
+<div class="fpd">
+<a class="fbld" href="javascript:;" title="文字加粗">B</a>
+<a class="fclr" href="javascript:;" id="fastpostforecolor" title="设置文字颜色">Color</a>
+<a class="fmg" href="javascript:;" id="fastpostimg" title="图片">Image</a>
+<a class="flnk" href="javascript:;" id="fastposturl" title="添加链接">Link</a>
+<a class="fqt" href="javascript:;" id="fastpostquote" title="引用">Quote</a>
+<a class="fcd" href="javascript:;" id="fastpostcode" title="代码">Code</a>
+<a class="fsml" href="javascript:;" id="fastpostsml">Smilies</a>
+</div></div>
+<div class="area">
+<div class="pt hm">
+您需要登录后才可以发帖 <a class="xi2" href="member.php?mod=logging&amp;action=login" onclick="showWindow('login', this.href)">登录</a> | <a class="xi2" href="member.php?mod=registerp">立即注册</a>
+<a href="https://bbs.pythontab.com/connect.php?mod=login&amp;op=init&amp;referer=forum.php%3Fmod%3Dforumdisplay%26fid%3D3%26page%3D1&amp;statfrom=login" rel="nofollow" target="_top"><img class="vm" src="static/image/common/qq_login.gif"/></a>
+</div>
+</div>
+</div>
+</div>
+<div class="mtm sec"><span id="secqaa_qSm3C4s3"></span>
+<script reload="1" type="text/javascript">updatesecqaa('qSm3C4s3', '<sec> <span id="sec<hash>" onclick="showMenu(this.id)"><sec></span><div id="sec<hash>_menu" class="p_pop p_opt" style="display:none"><sec></div>', 'forum::forumdisplay');</script>
+<span id="seccode_cSm3C4s3"></span>
+<script reload="1" type="text/javascript">updateseccode('cSm3C4s3', '<sec> <span id="sec<hash>" onclick="showMenu(this.id)"><sec></span><div id="sec<hash>_menu" class="p_pop p_opt" style="display:none"><sec></div>', 'forum::forumdisplay');</script>
+</div>
+<input name="formhash" type="hidden" value="12602e82"/>
+<input name="usesig" type="hidden" value=""/>
+</div>
+<p class="ptm pnpost">
+<a class="y" href="home.php?mod=spacecp&amp;ac=credit&amp;op=rule&amp;fid=3" target="_blank">本版积分规则</a>
+<button class="pn pnc" id="fastpostsubmit" name="topicsubmit" tabindex="13" type="submit" value="topicsubmit"><strong>发表帖子</strong></button>
+</p>
+</form>
+</div>
+</div>
+<!--[diy=diyforumdisplaybottom]--><div class="area" id="diyforumdisplaybottom"></div><!--[/diy]-->
+</div>
+</div>
+</div>
+<script type="text/javascript">document.onkeyup = function(e){keyPageScroll(e, 0, 1, 'forum.php?mod=forumdisplay&fid=3&filter=&orderby=lastpost&', 1);}</script>
+<script type="text/javascript">checkForumnew_handle = setTimeout(function () {checkForumnew(3, lasttime);}, checkForumtimeout);</script>
+<div class="wp mtn">
+<!--[diy=diy3]--><div class="area" id="diy3"></div><!--[/diy]-->
+</div>
+<script>fixed_top_nv();</script></div>
+<script type="text/javascript">
+_attachEvent(window, 'load', getForbiddenFormula, document);
+function getForbiddenFormula() {
+var toGetForbiddenFormulaFIds = function () {
+ajaxget('plugin.php?id=cloudsearch&formhash=12602e82');
+};
+var a = document.body.getElementsByTagName('a');
+for(var i = 0;i < a.length;i++){
+if(a[i].getAttribute('sc')) {
+a[i].setAttribute('mid', hash(a[i].href));
+a[i].onmousedown = function() {toGetForbiddenFormulaFIds();};
+}
+}
+var btn = document.body.getElementsByTagName('button');
+for(var i = 0;i < btn.length;i++){
+if(btn[i].getAttribute('sc')) {
+btn[i].setAttribute('mid', hash(btn[i].id));
+btn[i].onmousedown = function() {toGetForbiddenFormulaFIds();};
+}
+}
+}
+</script>
+<script type="text/javascript">
+					var urlRetry = SITEURL + '/plugin.php?id=security:job';
+					var ajaxRetry = new Ajax();
+					ajaxRetry.post(urlRetry, 'formhash=12602e82', function(s){});
+					</script>
+<div class="cl" id="footer">
+<div class="wp cl" id="ft">
+<div class="ftlogo cl"> <img src="template/win8mi_5th_hui/src/ftlogo.png"/> </div>
+<div class="widget-2 last widget">
+<div class="borders">
+<p> <a href="https://www.pythontab.com/html/about/aboutus/" target="_blank">关于</a><span class="pipe">|</span> <a href="/forum.php?mod=misc&amp;action=showdarkroom">小黑屋</a><span class="pipe">|</span> <strong><a href="https://bbs.pythontab.com" target="_blank">Python论坛</a></strong>
+         <a href="http://discuz.qq.com/service/security" target="_blank" title="防水墙保卫网站远离侵害"><img src="static/image/common/security.png"/></a>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F141f4ed9eb11f462fa19fdd960639134' type='text/javascript'%3E%3C/script%3E"));
+
+function trackme(trackName){
+        _hmt.push(['_trackEvent', 'track-' + trackName, 'click']);
+    }
+</script>
+</p>
+<p>Copyright <a href="https://www.pythontab.com" style="color: #888888;" target="_blank">PYTHONTAB.COM</a>  
+         2012-2018  </p>
+<p class="xs0" style="display: none;"> GMT+8, 2018-8-7 11:02 <span id="debuginfo"> 
+        , Processed in 0.119565 second(s), 21 queries 
+        . 
+         
+        </span> </p>
+</div>
+</div>
+<div class="widget widget-1" style="text-align: right;">
+<!-- 第三方图标 -->
+<!-- 第三方图标 -->
+</div>
+</div>
+</div>
+<script src="home.php?mod=misc&amp;ac=sendmail&amp;rand=1533610953" type="text/javascript"></script>
+<div id="scrolltop">
+<span hidefocus="true"><a class="scrolltopa" onclick="window.scrollTo('0','0')" title="返回顶部"><b>返回顶部</b></a></span>
+<span>
+<a class="returnboard" hidefocus="true" href="forum.php" title="返回版块"><b>返回版块</b></a>
+</span>
+</div>
+<script type="text/javascript">_attachEvent(window, 'scroll', function () { showTopLink(); });checkBlind();</script>
+</div></body></html>
