@@ -20,7 +20,7 @@ while  True:
             zongjia.append(10)
         elif age > 120:
             user -= 1
-            print('\t不要胡闹,请重新输入')
+            print('\t请重新输入')
     else:
         break
 print('\n请支付：' + str(sum(zongjia)) + '元人民币！')
