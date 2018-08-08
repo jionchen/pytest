@@ -1,6 +1,6 @@
 #!/env/python3
 #-*- coding=utf-8 -*-
-#根据人数计算电影票总价
+
 sum=0
 p=0
 i=input("请问您几个人看电影：")
@@ -11,7 +11,9 @@ while p<i :
      m=input("请问您多大：")
      m=int(m)
     except Exception:
-      raise Exception("类型错误")
+      print("类型错误")
+      p-=1
+      continue
     if m<18:
        sum+=10
     elif m<=60:
