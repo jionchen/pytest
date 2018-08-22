@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #check file exists or not and check the statenments
-
+#version 1.0
 
 function usage(){
 echo "Usage:$0 file_name time_hour
