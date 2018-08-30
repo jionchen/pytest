@@ -1,2 +1,2 @@
 # pytest
-learning python
+练习简单python的脚本
